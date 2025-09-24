@@ -7,8 +7,9 @@ log/
 *.pt
 
 # Custom dataset -> https://app.roboflow.com/robotik-7goue/balldetector-pgfsi/5
-yolo_feintuning/dataset
+yolo_feintuning/dataset/
 yolo_feintuning/roboflow-env/
+yolo_feintuning/results/make_gifs.sh
 
 # Python
 __pycache__/
