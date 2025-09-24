@@ -11,6 +11,7 @@ yolo_feintuning/dataset/
 yolo_feintuning/coco_pretrained_models
 yolo_feintuning/roboflow-env/
 yolo_feintuning/results/make_gifs.sh
+yolo_feintuning/adjust_class_IDs.yp
 
 # Python
 __pycache__/
