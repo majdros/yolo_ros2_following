@@ -1,6 +1,6 @@
-It integrates dataset handling, model training/validation/inference utilities, and control/following ROS2 nodes.
+<!-- It integrates dataset handling, model training/validation/inference utilities, and control/following ROS2 nodes.
 Develop an object detector that allows the robot to follow a specific object in real-time using YOLO.
-This feature will use computer vision to detect and track the object and integrate it with the robot's motion control system.
+This feature will use computer vision to detect and track the object and integrate it with the robot's motion control system. -->
 
 
 <!-- 
@@ -36,15 +36,15 @@ The fine-tuning process yielded a significant improvement in detection accuracy.
 
 <p align="center">
   <div style="display: inline-block; margin-right: 0px;">
-    <img src="results\gifs\BoxF1_curve.gif" width="500px">
+    <img src="..\figures\BoxF1_curve.gif" width="500px">
   </div>
   <div style="display: inline-block; margin-left: 0px;">
-    <img src="results\gifs\confusion_matrix_normalized.gif" width="500px">
+    <img src="..\figures\confusion_matrix_normalized.gif" width="500px">
   </div>
 </p>
 <p align="center">
   <div style="display: inline-block; margin-right: 0px;">
-    <img src="results\gifs\results.gif" width="1000px">
+    <img src="..\figures\results.gif" width="1000px">
   </div>
 
 -----
@@ -104,15 +104,16 @@ All outputs from these scripts are saved in the `results` directory.
 
 ```bash
 └── 📁yolo_feintuning
-    ├── 📁dataset
-    │   ├── data_coco.yaml          # YAML for COCO model comparison
-    │   └── data.yaml               # YAML for custom model training
     ├── 📁results
+    ├── 📁gifs
     │   ├── 📁predict               # Saved inference results
     │   ├── 📁train                 # Saved training results
     │   └── 📁val                   # Saved validation results
-    ├── README.md                   # This file
-    ├── yolo_predict.py
-    ├── yolo_train.py
-    └── yolo_valid.py
+    └── 📁scripts
+    │   ├── yolo_predict.py
+    │   ├── yolo_train.py
+    │   └── yolo_valid.py
+    ├── README.md                   # you are here
+    └── downlaodDataset3Calsses.py
+
 ```
