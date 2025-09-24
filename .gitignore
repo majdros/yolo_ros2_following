@@ -1,0 +1,14 @@
+# ROS2
+build/
+install/
+log/
+
+# YOLO Models
+*.pt
+
+# Custom dataset -> https://app.roboflow.com/robotik-7goue/balldetector-pgfsi/5
+yolo_feintuning/dataset
+yolo_feintuning/roboflow-env/
+
+# Python
+__pycache__/
