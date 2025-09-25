@@ -23,6 +23,7 @@ For easy navigation between sections, the following Table of Contents can be use
       - [2. ball\_follower\_node](#2-ball_follower_node)
   - [ROS2 Workflow](#ros2-workflow)
 
+-----
 
 ## Overview
 This ROS2 package integrates computer vision-based object detection with the ROS2 framework.  
@@ -39,6 +40,8 @@ It uses the fine-tuned YOLOv8n model trained via transfer learning to detect and
 - Implementation of the following logic for automatic ball tracking
 - Maintains a configurable following distance (`stop_distance_m`) from the detected object
 
+<details>
+<summary>Click to expand Package Structure</summary>
 
 ```bash
 └── 📁yolo_ros2_following                   # Parent Package
@@ -61,6 +64,9 @@ It uses the fine-tuned YOLOv8n model trained via transfer learning to detect and
         ├── setup.cfg
         └── setup.py
 ```
+</details>
+
+-----
 
 ## Usage
 ### 1. Launch Commands:
@@ -121,6 +127,8 @@ ROS2 parameters provide **runtime configurability** without modifying the source
 *These limits ensure safe robot operation regardless of linear_speed_gain parameter value.*
 </details>
 
+-----
+
 ## Camera Intrinsic Calibration using [rgb_camera/camera_node](./yolo_ros2_interaction/camera_node.py)
 
 The camera was calibrated using a chessboard pattern following the official ROS2 tutorial: [Monocular Calibration](https://docs.ros.org/en/rolling/p/camera_calibration/doc/tutorial_mono.html).
@@ -137,6 +145,8 @@ This intrinsic calibration serves **two main purposes**:
     - These calibration parameters are stored in a [YAML](./config/usb_cam.yaml) file and later used by the following logic (explained below).
 
 This enables the **real robot** not only to see an undistorted image, but also to **estimate distances and real-world object sizes** directly from the camera feed.
+
+-----
 
 ## Following Logic using [ball_follower_node](./yolo_ros2_interaction/ball_follower_node.py)
 
@@ -165,7 +175,7 @@ Small deviations around the target distance are naturally smoothed by the propor
 #### 1. **Angular Control (Steering)**
 ```python
 # Error calculation: deviation from image center
-error_x = center_x - self.image_width / 2.0     # relative to half the image width
+error_x = center_x - self.image_width / 2.0
 kp_angular = 1 / (self.image_width / 2.0)
 angular_z = -float(error_x) * kp_angular
 ```
@@ -189,8 +199,9 @@ linear_x = size_error * kp_linear
 - **Purpose**: Maintains optimal following distance
 - **Input**: Detected bounding box width (`detected_width`)
 - **Output**: Linear velocity command (`linear_x`)
-- **Range**: `[-1.1, 1.1]` m/s (with safety limits AFTER `linear_speed_gain` multiplication)
+- **Range**: `[-1.1, 1.1]` m/s (with safety limits **AFTER** `linear_speed_gain` multiplication, linear speed safety-limited)
 
+-----
 
 ## Components
 
@@ -226,10 +237,11 @@ Implements the ball-following behavior
     - Subscribes to yolo detections from `/yolo/detections` topic
     - Generates velocity commands based on detection results and publishes them to the `/cmd_vel_yolo` topic
 
+-----
+
 ## ROS2 Workflow
 This project is summarized in the workflow shown in the *Camera-Objectfollower Pipeline* diagram above. 
 It builds upon a customized version of the [yolo_ros](https://github.com/mgonzs13/yolo_ros) repository by Miguel Ángel González Santamarta. The original repository was cloned and adapted specifically for this project's requirements:
-
 
 **Key Modifications:**
 - **Streamlined Architecture**: Removed tracking components and nodes not relevant for this Project.
@@ -238,7 +250,7 @@ It builds upon a customized version of the [yolo_ros](https://github.com/mgonzs1
 - **Lightweight Implementation**: Preserved only essential components for real-time detection and control.
 
 **Model Configuration:**
-The system uses the [fine-tuned YOLOv8n model](../yolo_3balls.pt), trained for 75 epochs using transfer learning on a [custom dataset](https://app.roboflow.com/robotik-7goue/balldetector-pgfsi/5).
+The system uses the [fine-tuned YOLOv8n model](../yolo_feintuning/results/train/feinTuned_yolov8n_75_epochs/BoxF1_curve.png), trained for 75 epochs using transfer learning on a [custom dataset](https://app.roboflow.com/robotik-7goue/balldetector-pgfsi/5).
 
 **Integration with External Control Framework**
 The control logic is based on a previously developed [project](https://github.com/majdros/desktop_ros2_ws/blob/main/README.md).

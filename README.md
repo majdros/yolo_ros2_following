@@ -13,7 +13,7 @@ This repository integrates YOLOv8 (You Only Look Once, version 8) with ROS 2 (Ro
 
 ## Overview
 
-The main goal is to reliably detect and classify specific objects (three ball classes), estimate their position within the camera frame, as well as their size and distance, and integrate these detections into the robot's control system, enabling interactive capabilities. The connection between ROS2 image topics and OpenCV (cv2) is handled using the ROS–OpenCV bridge cv_bridge.
+The main goal is to reliably detect and classify specific objects (three ball classes), estimate their position within the camera frame, as well as their size and distance, and integrate these detections into the robot's control system, enabling interactive capabilities. The connection between ROS2 image topics and OpenCV (cv2) is handled using the ROS–OpenCV bridge cv_bridge. This project is tested with the camera [HBVCAM-W202012HD V33](https://www.hbvcamera.com/1MP-%20HD-usb-cameras/hbvcam-ov9726-720p-hd-otg-free-driver-pc-webcam-camera-module.html?utm_source=chatgpt.com), and is based on the open-source repository [yolo_ros](https://github.com/mgonzs13/yolo_ros) for launching YOLO.
 
 <p align="center">
   <img src="./figures/yolo_3balls_pred.jpg" width="700px" >
@@ -30,6 +30,7 @@ The Project is designed to:
     ├── 📁yolo_feintuning          # Package for dataset handling, training, and model fine-tuning      
     ├── 📁yolo_ros2_interaction    # ROS2 package for YOLO integration and following nodes
     ├── 📁figures                  # doc media
+    ├── yolo                       # Open-Source Repo
     ├── LICENSE
     ├── README.md                  # you are here
     ├── requirements.txt
@@ -41,6 +42,8 @@ For better modularity and clarity, this repository is structured into two main p
 
 - [yolo_feintuning](./yolo_feintuning/README.md)
 - [yolo_ros2_interaction](./yolo_ros2_interaction/README.md)
+
+## Limitation
 
 ## License
 This Work is licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). See the [LICENSE](./LICENSE) file for details.
