@@ -30,7 +30,7 @@ The Project is designed to:
     ├── 📁yolo_feintuning          # Package for dataset handling, training, and model fine-tuning      
     ├── 📁yolo_ros2_interaction    # ROS2 package for YOLO integration and following nodes
     ├── 📁figures                  # doc media
-    ├── yolo                       # Open-Source Repo
+    ├── 📁yolo                       # Open-Source Repo
     ├── LICENSE
     ├── README.md                  # you are here
     ├── requirements.txt
@@ -44,6 +44,11 @@ For better modularity and clarity, this repository is structured into two main p
 - [yolo_ros2_interaction](./yolo_ros2_interaction/README.md)
 
 ## Limitation
+The current implementation of object detection and following has several limitations that should be considered:
+
+- RGB camera limitations: The project is based on an RGB camera that can only follow specific, pre-examined and measured objects.
+
+- Lighting Conditions: Since the project is designed for indoor use, the validation of models was performed exclusively under artificial lighting. Performance may degrade in outdoor environments or under significantly different lighting conditions.
 
 ## License
-This Work is licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). See the [LICENSE](./LICENSE) file for details.
+This Work is licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).

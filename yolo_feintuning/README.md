@@ -176,4 +176,4 @@ The following two GIF files illustrate the F1-score and confusion matrices for a
   </div>
 </p>
 
-The model with 75 epochs achieves its maximum F1 score of 0.99 at a confidence threshold of 0.817, therefore this model will be deployed for the project with a confidence threshold of 0.8.
+The model with 75 epochs achieves its maximum F1 score of 0.99 at a confidence threshold of 0.817, therefore this model will be deployed in the yolo [launch file](../yolo/yolo_bringup/launch/yolo.launch.py) with a confidence threshold of 0.8.
