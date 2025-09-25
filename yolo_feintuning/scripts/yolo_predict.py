@@ -6,10 +6,10 @@ yolo_model = f"results/train/{yolo_version}/weights/best.pt"
 
 model = YOLO(yolo_model, task="detect")
 preds = model.predict(
-                    source="dataset/valid/images",
+                    source="../dataset/valid/images",
                     imgsz=640,
                     conf=0.25,
-                    project = f"results/predict/{yolo_version}",
+                    project = f"../results/predict/{yolo_version}",
                     save=True
                     )
 

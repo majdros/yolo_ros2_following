@@ -11,7 +11,7 @@ for epoch in epochs:
                         batch = 8,
                         imgsz = 640,
                         device = 0,
-                        project = "results/train",
+                        project = "../results/train",
                         # patience = 20,
                         optimizer = 'adamW',
                         name = f'feinTuned_yolov8n_{epoch}_epochs'
